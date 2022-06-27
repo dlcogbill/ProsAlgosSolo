@@ -1,0 +1,11 @@
+[REQUIRED] Name: David Cogbill
+[REQUIRED] Project Title: FlashBook?(Working Title)
+[REQUIRED] Project Stack: JavaScript/React
+[REQUIRED] GitHub Repo Link: https://github.com/dlcogbill/ProsAlgosSolo
+
+[REQUIRED] Project Description: Website for Photographer and videographer to display their work and users to connect with them for booking events.
+
+[REQUIRED] New Programming Concept(s) I'm Planning to Learn: React Auth, React w/ Bootstrap, and possibly Many to Many w/ MongoDB
+
+
+

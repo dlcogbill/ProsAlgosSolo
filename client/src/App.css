@@ -1,0 +1,194 @@
+body {
+  background-color: black;
+}
+.App {
+  margin: 0px auto;
+  width: 80%;
+  background-color: black;
+}
+
+h3 {
+  background-color: white;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+img {
+  max-width: 100%;
+}
+
+/*Welcome Page */
+.welcomeBack {
+  position: relative;
+  display: flex;
+  margin: 0 auto;
+}
+
+.welcomeFront {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  margin: 0 auto;
+  background-color: #FFF3D5;
+  border-radius: 12px;
+  margin: 2px;
+  padding: 2px;
+  width: 60%;
+}
+
+/*Posts Page */
+.postList {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #FFF3D5;
+  border-radius: 12px;
+  gap: 0;
+  padding: 5px;
+  margin: 0 auto;
+  overflow-y: scroll;
+  height: 600px;
+}
+
+.postListItem {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  padding: 5px;
+  width: 30%;
+}
+
+.postListItem > * {
+  width: 100%;
+}
+
+/* Post Form Page */
+.postForm {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFF3D5;
+  border-radius: 12px;
+  gap: 0;
+  padding: 15px;
+  margin: 0 auto;
+  height: 600px;
+}
+
+
+
+.mb-3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.formButton {
+  width: 10%;
+}
+
+.text-danger {
+  color: red;
+}
+
+/* Registration & Login */
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  background-color: #FFF3D5;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.reglog {
+  display: flex;
+}
+
+.reglog > * {
+  width: 100%;
+}
+
+/* User Home */
+.sessionListItem {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  padding: 5px;
+  width: 25%;
+  height: fit-content;
+  background-color: white;
+}
+
+
+
+
+
+
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFE5A0;
+  margin: 20px;
+  padding: 5px;
+  border-radius: 12px;
+}
+
+.profileLink {
+  display: flex;
+  flex-direction: column;
+  margin: 2px;
+  padding: 5px;
+}
+
+.profileLinkContainer {
+  display: flex;
+}
+
+.userBox {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+.profileLinkImg {
+  border-radius: 50%;
+  width: 150px;
+}
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

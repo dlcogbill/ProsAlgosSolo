@@ -27,7 +27,7 @@ const SessionSchema = new mongoose.Schema(
             required: [true, 'A date for the session is required!'],
         },
         location: {
-            type: Object,
+            type:  String,
             required: [true, 'A location is required!'],
         },
         locationName: {

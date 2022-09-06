@@ -15,6 +15,11 @@ function Header({ loggedIn, setLoggedIn, setIsAdmin }) {
         if (userToken) {
             const user = jwt(userToken);
             setUser(user);
+            setLoggedIn(true);
+            console.log(user);
+        } else {
+            setLoggedIn(false);
+            setUser(null);
         }
     }, [loggedIn]);
     const handleLogout = () => {
@@ -51,11 +56,11 @@ function Header({ loggedIn, setLoggedIn, setIsAdmin }) {
         {user ? (
                 <div className="userBox">
                     <p>Welcome Back <NavLink to={`/${user.userType}/${user.userName}`}>{user.userName}</NavLink></p>
-                    <Button className="formButton" onClick={handleLogout} >Logout</Button>
+                    <p><NavLink to="/posts"> Home </NavLink>|<Button className="formButton" onClick={handleLogout} >Logout</Button></p>
                 </div>
             ) : (
                 <div className="userBox">
-                    <NavLink to="/Posts">Home</NavLink>
+                    <NavLink to="/posts">Home</NavLink>
                     <NavLink to="/reglog">Register/Login</NavLink>
                 </div>
             )}

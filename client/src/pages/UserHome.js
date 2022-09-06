@@ -1,31 +1,34 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, NavLink } from 'react-router-dom';
+import { useParams, NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-function AdminHome() {
+function UserHome({ loggedIn }) {
     const { username } = useParams();
-    const [sessions,setSessions] = useState([])
+    const [sessions,setSessions] = useState([]);
+    const navigate = useNavigate();
     
     useEffect(() => {
-        axios
-            .get('http://localhost:8000/api/sessions/',{}, { withCredentials: true })
+        if (loggedIn) {
+            axios
+            .get(`http://localhost:8000/api/sessionsbyuser/${username}`, {}, { withCredentials: true })
             .then((response) => {
                 setSessions(response.data);
             })
-            .catch((error) => console.log('Profile error', error));
-    }, [])
+            .catch((error) => console.log('Get sessions error', error));
+        } else {
+            navigate('/reglog');
+        }
+    }, []);
 
     return (
     <div>
         <h3>
-            <NavLink to={'/posts'}>View Posts</NavLink>|
-            <NavLink to={'/admin/posts/new'}>Post some work!</NavLink>|
-            <NavLink to={'/admin/posts/new'}>Post some work!</NavLink>
+            <NavLink to='/sessions/new'>Book a session!</NavLink>
         </h3>
         <div className="postList">
             {sessions.map((session) => (
                 <div className="sessionListItem" key={session._id}>
-                    <NavLink to={`/${ username }/sessions/${ session._id }`} >{session.sessionName}</NavLink>
+                    <NavLink to={`/sessions/${session._id}`}>{session.sessionName}</NavLink>
                     <p>Date: { new Date(session.date).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) }</p>
                     <p>Type: {session.sessionType}</p>
                     <p>Status: {session.status}</p>
@@ -36,4 +39,4 @@ function AdminHome() {
     );
 }
 
-export default AdminHome;
+export default UserHome;

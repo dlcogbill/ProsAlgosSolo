@@ -1,34 +1,32 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-import SessionForm from './SessionForm';
+import SessionForm from '../components/SessionForm';
 
 function UpdateSession() {
     const { userName, id } = useParams();
-    const [ updateSession, setUpdateSession ] = useState({});
-    const [ editSession, setEditSession ] = useState({});
+    const [ editSession, setEditSession ] = useState(null);
     const navigate = useNavigate();
     
 
     useEffect(() => {
         axios
-            .get('http://localhost:8000/api/sessions/'+ id)
+            .get('http://localhost:8000/api/sessions/'+ id, {withCredentials: true})
             .then((response) => {
-                setUpdateSession(response.data);
+                console.log(response.data);
                 setEditSession(response.data);
             })
             .catch((error) => {
                 console.log('Error in get session', error);
             });
-            console.log(updateSession);
-            console.log(editSession);
+        
     },[]);
 
     const updateSessionDB = (session, setErrors) => {
         axios
-            .put(`http://localhost:8000/api/sessions/${id}`, session)
+            .put(`http://localhost:8000/api/sessions/${id}`, session, {withCredentials: true})
             .then((response) => {
-                navigate('/users/' + userName);
+                navigate('/Users/' + userName);
             })
             .catch((error) => {
                 setErrors(error.response.data.error.errors);
@@ -38,10 +36,10 @@ function UpdateSession() {
     return (
         <div>
             <h3>Update your Session:</h3>
-            <SessionForm
+            {editSession ? <SessionForm
                 submitHandler={ updateSessionDB }
                 buttonText="Update Session"
-                post={updateSession} />
+                session={editSession} /> : <p>Loading</p> }
         </div>
     )
 }

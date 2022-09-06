@@ -21,7 +21,7 @@ function Login({ setLoggedIn }) {
             })
             .then((response) => {
                 setLoggedIn(true)
-                navigate('/users/' + response.data.user.userName );
+                navigate('/User/' + response.data.user.userName );
             })
             .catch((error) => {
                 console.log(error);

@@ -1,7 +1,7 @@
 import {useState, useEffect} from 'react';
 import axios from 'axios';
 import {NavLink} from 'react-router-dom';
-import DeletePost from './DeletePost';
+import DeletePost from '../components/DeletePost';
 
 function PostList({ isAdmin }) {
     const [posts,setPosts] = useState([]);

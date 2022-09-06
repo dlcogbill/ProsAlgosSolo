@@ -1,5 +1,5 @@
-import AdminRegister from './AdminRegister';
-import AdminLogin from './AdminLogin';
+import AdminRegister from '../components/AdminRegister';
+import AdminLogin from '../components/AdminLogin';
 import { NavLink } from 'react-router-dom';
 
 function AdminRegLog({ setLoggedIn, setIsAdmin }) {

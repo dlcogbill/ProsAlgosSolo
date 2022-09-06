@@ -23,7 +23,7 @@ module.exports = (app) => {
     app.post("/logout", UserController.logout);
     app.get("/users", UserController.getLoggedInUser);
     //Admin routes
-    app.get("/admin/users", authenticate, UserController.getUsers);
+    app.get("/admin/users", UserController.getUsers);
     app.post("/admin/register", UserController.adminRegister);
     app.post("/admin/login", UserController.adminLogin);
     app.delete("/admin/users/:id", UserController.deleteUser);

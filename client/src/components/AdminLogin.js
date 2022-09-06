@@ -24,7 +24,7 @@ function AdminLogin({ setLoggedIn, setIsAdmin }) {
             .then((response) => {
                 setLoggedIn(true);
                 setIsAdmin(true);
-                navigate('/admin/' + response.data.user.userName );
+                navigate('/Admin/' + response.data.user.userName );
             })
             .catch((error) => {
                 console.log(error);

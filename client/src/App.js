@@ -3,17 +3,18 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/Header';
-import Welcome from './components/Welcome';
-import PostList from './components/PostList';
-import RegLog from './components/RegLog';
-import UserHome from './components/UserHome';
-import NewSession from './components/NewSession';
-import UpdateSession from './components/UpdateSession';
-import ViewSession from './components/ViewSession';
-import AdminRegLog from './components/AdminRegLog';
-import NewPost from './components/NewPost';
-import UpdatePost from './components/UpdatePost';
-import AdminHome from './components/AdminHome';
+import Welcome from './pages/Welcome';
+import PostList from './pages/PostList';
+import RegLog from './pages/RegLog';
+import UserHome from './pages/UserHome';
+import NewSession from './pages/NewSession';
+import UpdateSession from './pages/UpdateSession';
+import ViewSession from './pages/ViewSession';
+import AdminRegLog from './pages/AdminRegLog';
+import NewPost from './pages/NewPost';
+import UpdatePost from './pages/UpdatePost';
+import AdminHome from './pages/AdminHome';
+import UsersHome from './pages/UsersHome';
 
 function App() {
   const [loggedIn,setLoggedIn] = useState(false);
@@ -22,20 +23,23 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin}/>
-        <Routes>
-          <Route path="/" element={<Welcome />} />
-          <Route path="/posts" element={<PostList isAdmin={isAdmin}/>} />
-          <Route path="/reglog" element={<RegLog setLoggedIn={setLoggedIn} />} />
-          <Route path="/user/:username" element={<UserHome loggedIn={loggedIn} />} />
-          <Route path="/:username/sessions/new" element={<NewSession />} />
-          <Route path="/:username/sessions/:id/edit" element={<UpdateSession />} />
-          <Route path="/:username/sessions/:id" element={<ViewSession />} />
-          {/* Admin Routes */}
-          <Route path="/admin/reglog" element={<AdminRegLog setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin}/>} />
-          <Route path="/admin/posts/new" element={<NewPost isAdmin={isAdmin}/>} />
-          <Route path="/posts/:id/edit" element={<UpdatePost isAdmin={isAdmin}/>} />
-          <Route path="/admin/:username" element={<AdminHome isAdmin={isAdmin} />} />
-        </Routes>
+        <div className="pageBody">
+          <Routes>
+            <Route path="/" element={<Welcome />} />
+            <Route path="/posts" element={<PostList isAdmin={isAdmin}/>} />
+            <Route path="/reglog" element={<RegLog setLoggedIn={setLoggedIn} />} />
+            <Route path="/User/:username" element={<UserHome loggedIn={loggedIn} />} />
+            <Route path="/sessions/new" element={<NewSession loggedIn={loggedIn}/>} />
+            <Route path="/sessions/:id/edit" element={<UpdateSession loggedIn={loggedIn}/>} />
+            <Route path="/sessions/:id" element={<ViewSession loggedIn={loggedIn}/>} />
+            {/* Admin Routes */}
+            <Route path="/Admin/reglog" element={<AdminRegLog setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin}/>} />
+            <Route path="/Admin/posts/new" element={<NewPost isAdmin={isAdmin}/>} />
+            <Route path="/posts/:id/edit" element={<UpdatePost isAdmin={isAdmin}/>} />
+            <Route path="/Admin/:username" element={<AdminHome isAdmin={isAdmin} />} />
+            <Route path="/Admin/users" element={<UsersHome isAdmin={isAdmin} />} />
+          </Routes>
+        </div>
       </div>
     </BrowserRouter>
   );

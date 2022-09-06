@@ -5,6 +5,7 @@ body {
   margin: 0px auto;
   width: 80%;
   background-color: black;
+  height: 95%;
 }
 
 h3 {
@@ -22,6 +23,7 @@ img {
   position: relative;
   display: flex;
   margin: 0 auto;
+  height: 70vh;
 }
 
 .welcomeFront {
@@ -46,7 +48,7 @@ img {
   padding: 5px;
   margin: 0 auto;
   overflow-y: scroll;
-  height: 600px;
+  height: 70vh;
 }
 
 .postListItem {
@@ -81,7 +83,7 @@ img {
 }
 
 .formButton {
-  width: 10%;
+  width: fit-content;
 }
 
 .text-danger {
@@ -117,21 +119,15 @@ img {
   background-color: white;
 }
 
-
-
-
-
-
-
-
-
+/* Header */
 .header {
   display: flex;
   justify-content: space-between;
   background-color: #FFE5A0;
-  margin: 20px;
+  margin: 20px 0px 20px 0px;
   padding: 5px;
   border-radius: 12px;
+  height: fit-content;
 }
 
 .profileLink {
@@ -153,7 +149,7 @@ img {
 
 .profileLinkImg {
   border-radius: 50%;
-  width: 150px;
+  width: 75px;
 }
 
 

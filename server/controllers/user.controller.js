@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 require('dotenv').config();
-const secret = process.env.SECRET_KEY;
+const SECRET = process.env.SECRET_KEY;
 const ADMIN_KEY = process.env.ADMIN_KEY;
 
 const register = async (req,res) => {
@@ -15,7 +15,7 @@ const register = async (req,res) => {
             _id: newUser._id,
             email: newUser.email,
             userName: newUser.userName,
-        }, secret );
+        }, SECRET );
         res
             .status(201)
             .cookie('userToken', userToken, {
@@ -53,7 +53,7 @@ const adminRegister = async (req,res) => {
             _id: newUser._id,
             email: newUser.email,
             userName: newUser.userName,
-        }, secret );
+        }, SECRET );
         res
             .status(201)
             .cookie('userToken', userToken, {
@@ -93,7 +93,7 @@ const login = async (req, res) => {
                     email: userDoc.email,
                     userName: userDoc.userName,
                     userType: userDoc.userType,
-                }, secret );
+                }, SECRET );
                 res
                     .cookie('userToken', userToken, {
                         expires: new Date(Date.now() + 1000000),
@@ -123,7 +123,7 @@ const adminLogin = async (req, res) => {
             const isPasswordValid = bcrypt.compare(req.body.password,userDoc.password);
             const isAdmin = false;
             
-            if (!isPasswordValid || req.body.userType !== 'Admin' || req.body.adminKey !== ADMIN_KEY) {
+            if (!isPasswordValid || userDoc.userType !== 'Admin' || req.body.adminKey !== ADMIN_KEY) {
                 res.status(400).json({ message: 'Invalid Login'});
             } else {
                 const userToken = jwt.sign({
@@ -131,7 +131,7 @@ const adminLogin = async (req, res) => {
                     email: userDoc.email,
                     userName: userDoc.userName,
                     userType: userDoc.userType,
-                }, secret );
+                }, SECRET );
                 res
                     .cookie('userToken', userToken, {
                         expires: new Date(Date.now() + 1000000),
@@ -159,7 +159,7 @@ const logout = (req, res) => {
 
 const getLoggedInUser = async (req, res) => {
     try {
-        const userPayLoad = jwt.verify(req.cookies.userToken,secret)
+        const userPayLoad = jwt.verify(req.cookies.userToken,SECRET)
         console.log('USER', userPayLoad);
         const user = await User.findOne({ _id: userPayLoad._id });
         res.json({

@@ -27,7 +27,7 @@ function Register({ setLoggedIn }) {
             .then((response) => {
                 setLoggedIn(true);
                 console.log('Response', response.data );
-                navigate('/users/' + response.data.user.userName );
+                navigate('/Users/' + response.data.user.userName );
             })
             .catch((error) => {
                 console.log(error);

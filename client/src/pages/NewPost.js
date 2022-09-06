@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import PostForm from './PostForm';
+import PostForm from '../components/PostForm';
 
 function NewPost({ isAdmin }) {
     const navigate = useNavigate();

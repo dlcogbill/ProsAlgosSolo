@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const soloProjectDB = "soloProjectDB";
 
-mongoose.connect(`mongodb://localhost/${soloProjectDB}`, {
+mongoose.connect(`mongodb://0.0.0.0/${soloProjectDB}`, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
